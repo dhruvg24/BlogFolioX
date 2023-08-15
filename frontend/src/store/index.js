@@ -22,6 +22,7 @@ const authSlice = createSlice({
 export const authActions= authSlice.actions
 
 // exporting the reducer function of store which will handle state of the redux
+
 export const store = configureStore({
     reducer : authSlice.reducer
 })
