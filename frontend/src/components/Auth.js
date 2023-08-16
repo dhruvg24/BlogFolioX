@@ -1,6 +1,8 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-
+import axios from "axios";
+// import { send } from "process";
+// axios for sending the data to backend, its JS Library to make HTTP Req from nodejs from browser
 const Auth = () => {
   // to render the inputs of form
   const [inputs, setInputs] = useState({
@@ -16,11 +18,25 @@ const Auth = () => {
         [e.target.name] : e.target.value,
     })
   )}
+
+  const sendRequest = async ()=> {
+    // post will have params as the url, json object i.e. to be sent, post returns a promise
+    const res = await axios.post("http://localhost:3000/api/user/login", {
+        email : inputs.email, 
+        password : inputs.password
+    }).catch((err)=>console.log(err))
+
+    // data received from response
+    const data = await res.data;
+    return data;
+  }
   const handleSubmit = (e)=>{
     e.preventDefault();
     // need this to handle and process form without making entire page getting loaded again
     console.log(inputs)
-  }
+    sendRequest();
+    // cors needed -(Cross origin req and data)
+  };
 
   return (
     <div>
