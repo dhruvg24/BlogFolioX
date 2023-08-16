@@ -22,11 +22,13 @@ function App() {
         </header>
         <main>
           <Routes>
-            <Route path="/auth" element={<Auth />} />
+            {!isLoggedIn ? <Route path="/auth" element={<Auth />} /> : 
+            <>
             <Route path="/blogs" element={<Blogs />} />
             <Route path = "/blogs/add" element = {<AddBlog/>} />
             <Route path="/myBlogs" element={<UserBlogs />} />
             <Route path = "/myBlogs/:id" element = {<BlogDetails/>} />
+            </>}
           </Routes>
         </main>
       </React.Fragment>
