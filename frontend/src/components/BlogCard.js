@@ -4,11 +4,15 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
+import { Box } from "@mui/material";
+import { Icon } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 // const ExpandMore = styled((props) => {
 //   const { expand, ...other } = props;
@@ -21,8 +25,19 @@ import { red } from "@mui/material/colors";
 //   }),
 // }));
 
-const BlogCard = ({title, description, imageURL, userName}) => {
-  
+const BlogCard = ({title, description, imageURL, userName, isUser, id}) => {
+    const navigate = useNavigate();
+  console.log(title,isUser);
+//   isUser is to check whether the curr user is the owner of the blog 
+    const handleEdit = (e)=>{
+        navigate(`/myBlogs/${id}`)
+        // need to get the id as well 
+        // go to Blogs.js and get as props
+    }
+    const handleDelete = () => {
+        
+    }
+
   return (
     <Card
       sx={{
@@ -36,6 +51,12 @@ const BlogCard = ({title, description, imageURL, userName}) => {
         },
       }}
     >
+        {isUser && (
+            <Box display="flex">
+                <IconButton onClick={handleEdit} sx={{marginLeft:"auto"}}><EditIcon /></IconButton>
+                <IconButton onClick={handleDelete}><DeleteOutlineIcon/></IconButton>
+            </Box>
+        )}
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">

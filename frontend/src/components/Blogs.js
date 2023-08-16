@@ -8,6 +8,7 @@ const Blogs = () => {
   // need to get all blogs, using axios can geet request and useEffect would help to render component once dependency array changes
 
   const sendRequest = async () => {
+    
     const res = await axios
       .get("http://localhost:3080/api/blog")
       .catch((err) => console.log(err));
@@ -26,6 +27,10 @@ const Blogs = () => {
       {blogs &&
         blogs.map((blog, index) => (
           <BlogCard
+          // only the cur user logged in can delete a blog
+            id = {blog._id}
+            isUser = {localStorage.getItem("userId")===blog.user._id}
+            // compare the id with actual id of associated blog creator
             title={blog.title}
             description={blog.description}
             imageURL={blog.image}
