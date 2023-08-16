@@ -2,10 +2,12 @@ import { Box, Button, InputLabel, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useStyle } from "./Utils";
 
 const labelStyles = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 
 const AddBlog = () => {
+  const classes = useStyle;
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     title: "",
@@ -52,7 +54,7 @@ const AddBlog = () => {
           flexDirection={"column"}
           width={"80%"}
         >
-          <Typography
+          <Typography className={classes.font}
             fontWeight={"bold"}
             padding={3}
             color="grey"
@@ -61,8 +63,9 @@ const AddBlog = () => {
           >
             Post Your Blog
           </Typography>
-          <InputLabel sx={labelStyles}>Title</InputLabel>
+          <InputLabel className={classes.font} sx={labelStyles}>Title</InputLabel>
           <TextField
+          className={classes.font}
             name="title"
             onChange={handleChange}
             value={inputs.title}
@@ -70,8 +73,9 @@ const AddBlog = () => {
             variant="outlined"
           />
 
-          <InputLabel sx={labelStyles}>Description</InputLabel>
+          <InputLabel className={classes.font} sx={labelStyles}>Description</InputLabel>
           <TextField
+          className={classes.font}
             name="description"
             onChange={handleChange}
             value={inputs.description}
@@ -79,8 +83,9 @@ const AddBlog = () => {
             variant="outlined"
           />
 
-          <InputLabel sx={labelStyles}>ImageURL</InputLabel>
+          <InputLabel className={classes.font} sx={labelStyles}>ImageURL</InputLabel>
           <TextField
+          className={classes.font}
             name="imageURL"
             onChange={handleChange}
             value={inputs.imageURL}
