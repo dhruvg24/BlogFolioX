@@ -21,7 +21,8 @@ const Auth = () => {
 
   const sendRequest = async ()=> {
     // post will have params as the url, json object i.e. to be sent, post returns a promise
-    const res = await axios.post("http://localhost:3000/api/user/login", {
+    const res = await axios.post("http://localhost:3080/api/user/login", {
+      // backend is at port 3080
         email : inputs.email, 
         password : inputs.password
     }).catch((err)=>console.log(err))
