@@ -10,16 +10,16 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+// const ExpandMore = styled((props) => {
+//   const { expand, ...other } = props;
+//   return <IconButton {...other} />;
+// })(({ theme, expand }) => ({
+//   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+//   marginLeft: "auto",
+//   transition: theme.transitions.create("transform", {
+//     duration: theme.transitions.duration.shortest,
+//   }),
+// }));
 
 const BlogCard = ({title, description, imageURL, userName}) => {
   
@@ -39,7 +39,7 @@ const BlogCard = ({title, description, imageURL, userName}) => {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-            {userName}
+            {userName.charAt(0)}
           </Avatar>
         }
         title={title}
@@ -53,7 +53,8 @@ const BlogCard = ({title, description, imageURL, userName}) => {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          {description}
+         <b>{userName}</b> {": "}
+         {description}
         </Typography>
       </CardContent>
     </Card>

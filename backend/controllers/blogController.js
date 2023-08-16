@@ -124,6 +124,6 @@ export const getByUserId = async (req, res, next) => {
   if (!userBlogs) {
     return res.status(404).json({ message: "No blog found" });
   }
-  return res.status(200).json({ blogs: userBlogs });
-  // will contain the userBlogs in  blogs array
+  return res.status(200).json({ user: userBlogs });
+ 
 };

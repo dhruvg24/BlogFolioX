@@ -28,7 +28,7 @@ const Blogs = () => {
           <BlogCard
             title={blog.title}
             description={blog.description}
-            imageURL={blog.imageURL}
+            imageURL={blog.image}
             userName={blog.user.name}
           />
         ))}
