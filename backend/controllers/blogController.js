@@ -4,7 +4,8 @@ import mongoose from "mongoose";
 export const getAllBlogs = async (req, res, next) => {
   let blogs;
   try {
-    blogs = await BlogSchema.find();
+    blogs = await BlogSchema.find().populate('user');
+    // to get the user associated with blog as well
   } catch (err) {
     console.log(err);
   }

@@ -9,8 +9,11 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../store";
 const Header = () => {
+  const dispatch = useDispatch();
+
   const [value, setValue] = useState();
   // for tabs my blogs and all blogs
 
@@ -68,9 +71,10 @@ const Header = () => {
             </>
           )}
 
-          {/* when user is logged in then only show the logout */}
+          {/* when user is logged in then only display the logout */}
           {isLoggedIn && (
             <Button
+              onClick={() => dispatch(authActions.logout())}
               LinkComponent={Link}
               to="/auth"
               variant="contained"
